@@ -1,7 +1,5 @@
 from datetime import datetime
 
-
-
 def deadline_score():
     points = 0
     check1 = True
