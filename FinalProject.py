@@ -45,10 +45,8 @@ def deadline_score():
     print(f"Количество заработанных баллов {points}")
 # deadline_score()
 
-
-
 def late_list():
-    dict = {}
+    data_dict = {}
     check0 = True
     while check0:
         check1 = True
@@ -76,7 +74,7 @@ def late_list():
                 check2 = False
             except ValueError:
                 print("Неверный формат даты! Пожалуйста, используйте ДД.ММ.ГГГГ")
-        dict[name] = pass_date
+        data_dict[name] = pass_date
 
         choise = input("Ввести данные уще одного студента? \n Введите 1 если Да или 2 если Нет: ")
 
@@ -103,8 +101,12 @@ def late_list():
         except ValueError:
             print("Неверный формат даты! Пожалуйста, используйте ДД.ММ.ГГГГ")
 
-    result = {name: pass_date for name, pass_date in dict.items() if pass_date > deadline_date}
-    print(result)
+    new_dict = {
+        name: pass_date.strftime('%d.%m.%Y')
+        for name, pass_date in sorted(data_dict.items())
+        if pass_date > deadline_date
+    }
 
+    print( f"Список студентов сдавших работы позже назначенного времени {new_dict}")
 
 late_list()
