@@ -100,13 +100,12 @@ def late_list():
         except ValueError:
             print("Неверный формат даты! Пожалуйста, используйте ДД.ММ.ГГГГ")
 
-    new_dict = {
-        name: pass_date.strftime('%d.%m.%Y')
-        for name, pass_date in sorted(data_dict.items())
-        if pass_date > deadline_date
-    }
+    # Выводим список студентов сдавших позже назначенного срока
+    result = [name for name, pass_date in data_dict.items() if pass_date > deadline_date]
+    # Сортируем список в алфавитном порядке
+    result.sort()
 
-    print( f"Список студентов сдавших работы позже назначенного времени {new_dict}")
+    print( f"Список студентов сдавших работы позже назначенного времени {result}")
 
 check3 = True
 while check3:
