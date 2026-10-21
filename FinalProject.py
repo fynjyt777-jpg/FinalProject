@@ -75,19 +75,25 @@ def late_list():
                 print("Неверный формат даты! Пожалуйста, используйте ДД.ММ.ГГГГ")
         data_dict[name] = pass_date
 
-        choice1 = input("Ввести данные еще одного студента? \n Введите 1 если Да или 2 если Нет: ")
 
-        match choice1:
-            case "1":
-                print("Продолжаем ввод данных для проверки")
-            case "2":
-                print("Переходим на следующий шаг")
-                check0 = False
-            case _:
-                print("Введите 1 или 2!")
+        check3 = True
+        while check3:
+            choice1 = input("Ввести данные еще одного студента? \n Введите 1 если Да или 2 если Нет: ")
 
-    check3 = True
-    while check3:
+            match choice1:
+                case "1":
+                    print("Продолжаем ввод данных для проверки")
+                    check3 = False
+                case "2":
+                    print("Переходим на следующий шаг")
+                    check0 = False
+                    check3 = False
+                case _:
+                    print("Введите 1 или 2!")
+
+
+    check4 = True
+    while check4:
         # Запрашиваем у пользователя дату окончания приема работ
         deadline_date = input("Введите дату окончания приема работ в формате 'ДД.ММ.ГГГГ': ")
 
@@ -96,7 +102,7 @@ def late_list():
             # Преобразуем строку в объект datetime.date или datetime
             deadline_date = datetime.strptime(deadline_date, "%d.%m.%Y").date()
             print("Дата успешно распознана:", deadline_date)
-            check3 = False
+            check4 = False
         except ValueError:
             print("Неверный формат даты! Пожалуйста, используйте ДД.ММ.ГГГГ")
 
@@ -107,8 +113,8 @@ def late_list():
 
     print( f"Список студентов сдавших работы позже назначенного времени {result}")
 
-check3 = True
-while check3:
+check5 = True
+while check5:
     print(
         "Введите какую операцию будете производить: \n 1. Вычислить, какое количество баллов получит студент исходя из "
         "сроков сдачи работы (за каждую неделю задержки итоговая оценка уменьшается на один балл, \n максимальное "
@@ -123,7 +129,7 @@ while check3:
             late_list()
         case "3":
             print("Работа программы завершена")
-            check3 = False
+            check5 = False
         case _:
-            print("Введите 1 или 2!")
+            print("Введите 1, 2 или 3!")
 
